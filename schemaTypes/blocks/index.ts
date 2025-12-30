@@ -1,7 +1,17 @@
 import {textImageSchema} from './_text-image'
-import {sloganSchema} from './_slogan'
+import {callToActionBannerSchema} from './_call-to-action-banner'
 import {servicesSchema} from './_services'
 import {contactFormSchema} from './_contact'
 import {twoColumnContentSchema} from './_two-column-content'
+import {onDemandSchema} from './_on-demand'
+import {gallerySchema} from './_gallery'
 
-export {textImageSchema, sloganSchema, servicesSchema, contactFormSchema, twoColumnContentSchema}
+export {
+  textImageSchema,
+  callToActionBannerSchema,
+  servicesSchema,
+  contactFormSchema,
+  twoColumnContentSchema,
+  onDemandSchema,
+  gallerySchema,
+}
