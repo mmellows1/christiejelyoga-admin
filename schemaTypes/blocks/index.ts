@@ -5,6 +5,7 @@ import {contactFormSchema} from './_contact'
 import {twoColumnContentSchema} from './_two-column-content'
 import {onDemandSchema} from './_on-demand'
 import {gallerySchema} from './_gallery'
+import {largeCallToActionSchema} from './_large-call-to-action'
 
 export {
   textImageSchema,
@@ -14,4 +15,5 @@ export {
   twoColumnContentSchema,
   onDemandSchema,
   gallerySchema,
+  largeCallToActionSchema,
 }

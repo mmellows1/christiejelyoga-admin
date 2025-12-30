@@ -20,15 +20,29 @@ export const twoColumnContentSchema = defineType({
   },
   fields: [
     defineField({
-      name: 'heading',
-      title: 'Heading',
-      type: 'string',
+      name: 'leftContent',
+      title: 'Left Content',
+      type: 'array',
+      of: [{type: 'block'}],
     }),
     defineField({
-      name: 'content',
-      title: 'Content',
-      type: 'text',
-      rows: 2,
+      name: 'rightContent',
+      title: 'Right Content',
+      type: 'array',
+      of: [{type: 'block'}],
+    }),
+    defineField({
+      name: 'layout',
+      title: 'Layout',
+      type: 'string',
+      options: {
+        layout: 'radio',
+        list: [
+          {title: 'Equal (50% / 50%)', value: '6-6'},
+          {title: 'Left Narrow / Right Wide (33% / 66%)', value: '4-8'},
+          {title: 'Equal spaced (37.5% / 25% / 37.5%)', value: '5-2-5'},
+        ],
+      },
     }),
     defineField({
       title: 'CTA',
