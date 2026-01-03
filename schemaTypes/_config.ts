@@ -3,7 +3,7 @@ import {defineField, defineType} from 'sanity'
 export const configSchema = defineType({
   title: 'Config',
   name: 'config',
-  type: 'object',
+  type: 'document',
 
   fields: [
     defineField({
@@ -17,6 +17,17 @@ export const configSchema = defineType({
       type: 'image',
     }),
     defineField({
+      title: 'Momo Yoga Schedule URL',
+      name: 'momoYogaScheduleUrl',
+      type: 'url',
+    }),
+    defineField({
+      title: 'Frontpage',
+      name: 'frontpage',
+      type: 'reference',
+      to: [{type: 'pages'}],
+    }),
+    defineField({
       title: 'Menu',
       name: 'menu',
       type: 'array',
@@ -27,30 +38,26 @@ export const configSchema = defineType({
         },
       ],
     }),
+
     defineField({
-      title: 'CTAs',
+      title: 'Calls to Actions',
+      description: 'Displayed in the navigation bar at the top',
       name: 'ctas',
       type: 'array',
       of: [
         {
-          type: 'object',
-          fields: [
-            defineField({
-              title: 'Label',
-              name: 'label',
-              type: 'string',
-            }),
-            defineField({
-              title: 'Href',
-              name: 'href',
-              type: 'url',
-            }),
-            defineField({
-              title: 'New Tab',
-              name: 'newTab',
-              type: 'boolean',
-            }),
-          ],
+          type: 'ctaSchema',
+          preview: {
+            select: {
+              label: 'label',
+            },
+            prepare(selection) {
+              const {label} = selection
+              return {
+                title: 'Call to Action',
+              }
+            },
+          },
         },
       ],
     }),

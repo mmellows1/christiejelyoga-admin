@@ -1,75 +1,41 @@
-import {defineType} from 'sanity'
+import {defineType, Rule} from 'sanity'
 import {Text} from 'lucide-react'
+import {withBlockSchema} from '../../lib/blockSchema'
 
-export const textImageSchema = defineType({
-  title: 'Text/Media',
-  name: 'textMediaBlock',
-  type: 'object',
-  icon: Text,
-  preview: {
-    select: {
-      heading: 'heading',
+export const textImageSchema = withBlockSchema(
+  {
+    title: 'Text/Media',
+    name: 'textMediaBlock',
+    icon: Text,
+    preview: {
+      prepare() {
+        return {
+          title: 'Text/Media',
+          media: Text,
+        }
+      },
     },
-    prepare({heading}) {
-      return {
-        title: heading || 'Text/Media',
-        media: Text, // 👈 force icon instead of image
-      }
-    },
+    fields: [
+      defineType({
+        title: 'Image',
+        name: 'image',
+        type: 'image',
+      }),
+      defineType({
+        title: 'Image on left?',
+        description: 'Determines whether the image sits on the left or right',
+        name: 'imageFirst',
+        type: 'boolean',
+      }),
+      defineType({
+        title: 'Text',
+        name: 'content',
+        type: 'portableTextSchema',
+      }),
+    ],
   },
-  fields: [
-    {
-      title: 'Image',
-      name: 'image',
-      type: 'image',
-    },
-    {
-      title: 'Image on left?',
-      description: 'Determines whether the image sits on the left or right',
-      name: 'imageFirst',
-      type: 'boolean',
-    },
-    {
-      title: 'Text',
-      name: 'content',
-      type: 'array',
-      of: [
-        {
-          type: 'block',
-          styles: [
-            {title: 'Normal', value: 'normal'},
-            {title: 'H2', value: 'h2'},
-            {title: 'H3', value: 'h3'},
-            {title: 'Quote', value: 'blockquote'},
-          ],
-          marks: {
-            decorators: [
-              {title: 'Bold', value: 'strong'},
-              {title: 'Italic', value: 'em'},
-              {title: 'Underline', value: 'underline'},
-            ],
-            annotations: [
-              {
-                title: 'Link',
-                name: 'link',
-                type: 'object',
-                fields: [
-                  {
-                    title: 'URL',
-                    name: 'href',
-                    type: 'url',
-                  },
-                  {
-                    title: 'Open in new tab',
-                    name: 'blank',
-                    type: 'boolean',
-                  },
-                ],
-              },
-            ],
-          },
-        },
-      ],
-    },
-  ],
-})
+  {
+    hasPadding: true,
+    hasColors: true,
+  },
+)

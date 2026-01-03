@@ -1,16 +1,16 @@
 import {Package} from 'lucide-react'
-import {defineType} from 'sanity'
+import {defineType, Rule} from 'sanity'
+import {withBlockSchema} from '../../lib/blockSchema'
 
-export const servicesSchema = defineType({
+export const servicesSchema = withBlockSchema({
   title: 'Services',
   name: 'servicesBlock',
-  type: 'object',
   icon: Package,
   preview: {
     select: {
       heading: 'heading',
     },
-    prepare({heading}) {
+    prepare({heading}: {heading?: string}) {
       return {
         title: heading || 'Services',
         media: Package, // 👈 force icon instead of image
@@ -28,7 +28,7 @@ export const servicesSchema = defineType({
       name: 'services',
       type: 'array',
       of: [{type: 'reference', to: [{type: 'services'}]}],
-      validation: (Rule) => Rule.required(),
+      validation: (Rule: Rule) => Rule.required().min(1),
     },
   ],
 })

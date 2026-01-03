@@ -1,10 +1,10 @@
 import {defineType, defineField} from 'sanity'
 import {Icon, Images} from 'lucide-react'
+import {withBlockSchema} from '../../lib/blockSchema'
 
-export const gallerySchema = defineType({
+export const gallerySchema = withBlockSchema({
   name: 'galleryBlock',
   title: 'Gallery',
-  type: 'object',
   icon: Images,
   preview: {
     select: {
@@ -12,7 +12,7 @@ export const gallerySchema = defineType({
     },
     prepare(selection: {images: string[]}) {
       return {
-        title: 'Gallery (' + selection.images.length + ')',
+        title: selection.images ? 'Gallery (' + selection.images.length + ' selected)' : 'Gallery',
         media: Images,
       }
     },
@@ -24,6 +24,5 @@ export const gallerySchema = defineType({
       type: 'array',
       of: [{type: 'image'}],
     }),
-    // Add more fields here
   ],
 })

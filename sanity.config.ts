@@ -27,6 +27,10 @@ const mainDocuments = defineDocuments([
     route: '/:slug',
     filter: `_type == "pages" && slug.current == $slug`,
   },
+  {
+    route: '/',
+    filter: `_type == "pages" && _id == *[_type=="config"][0].frontpage._ref`,
+  },
 ])
 
 export default defineConfig({

@@ -1,5 +1,4 @@
 import {defineField, defineType} from 'sanity'
-import * as blocks from './blocks'
 
 export const pagesSchema = defineType({
   title: 'Pages',
@@ -27,22 +26,7 @@ export const pagesSchema = defineType({
     defineField({
       title: 'Content',
       name: 'content',
-      type: 'array',
-      options: {
-        sortable: true,
-        insertMenu: {
-          filter: true,
-          showIcons: true,
-          views: [
-            {name: 'list'},
-            {
-              name: 'grid',
-              previewImageUrl: (schemaTypeName) => `/static/preview-${schemaTypeName}.png`,
-            },
-          ],
-        },
-      },
-      of: Object.values(blocks).map((block) => ({type: block.name})),
+      type: 'blockSelectionSchema',
     }),
   ],
 })

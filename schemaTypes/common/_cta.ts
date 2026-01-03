@@ -8,7 +8,14 @@ export const ctaSchema = defineType({
   icon: Megaphone,
   preview: {
     select: {
-      heading: 'heading',
+      label: 'label',
+    },
+    prepare(selection) {
+      const {label} = selection
+      return {
+        title: label || 'CTA',
+        media: Megaphone,
+      }
     },
   },
   fields: [
@@ -20,7 +27,7 @@ export const ctaSchema = defineType({
     defineField({
       title: 'Href',
       name: 'href',
-      type: 'url',
+      type: 'string',
       description: 'Make sure its a valid URL',
     }),
     defineField({

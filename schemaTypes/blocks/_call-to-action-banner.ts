@@ -1,46 +1,44 @@
 import {Megaphone} from 'lucide-react'
 import {defineType} from 'sanity'
+import {withBlockSchema} from '../../lib/blockSchema'
 
-export const callToActionBannerSchema = defineType({
-  title: 'Call to action banner',
-  name: 'callToActionBannerBlock',
-  type: 'object',
-  icon: Megaphone,
-  preview: {
-    select: {
-      heading: 'heading',
+export const callToActionBannerSchema = withBlockSchema(
+  {
+    title: 'Call to action banner',
+    name: 'callToActionBannerBlock',
+    icon: Megaphone,
+    preview: {
+      select: {
+        heading: 'heading',
+      },
+      prepare({heading}) {
+        return {
+          title: heading || 'Call to action banner',
+          media: Megaphone,
+        }
+      },
     },
-    prepare({heading}) {
-      return {
-        title: heading || 'Call to action banner',
-        media: Megaphone,
-      }
-    },
+    fields: [
+      {
+        title: 'Heading',
+        name: 'heading',
+        type: 'string',
+      },
+      {
+        title: 'Description',
+        name: 'description',
+        type: 'text',
+        rows: 4,
+      },
+      {
+        title: 'CTA click',
+        name: 'cta',
+        type: 'ctaSchema',
+      },
+    ],
   },
-  fieldsets: [
-    {
-      name: 'link',
-      title: 'CTA Link',
-      options: {collapsible: true, collapsed: true},
-    },
-  ],
-  fields: [
-    {
-      title: 'Heading',
-      name: 'heading',
-      type: 'string',
-    },
-    {
-      title: 'Description',
-      name: 'description',
-      type: 'text',
-      rows: 4,
-    },
-    {
-      title: 'CTA click',
-      name: 'cta',
-      fieldset: 'link',
-      type: 'ctaSchema',
-    },
-  ],
-})
+  {
+    hasPadding: true,
+    hasColors: true,
+  },
+)
