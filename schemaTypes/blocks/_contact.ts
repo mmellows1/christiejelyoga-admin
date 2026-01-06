@@ -29,6 +29,7 @@ export const contactFormSchema = withBlockSchema(
     ],
   },
   {
+    hasAnimation: true,
     hasPadding: true,
     hasColors: true,
     hasAnalytics: true,

@@ -28,6 +28,7 @@ export const socialMediaBannerSchema = withBlockSchema(
     ],
   },
   {
+    hasAnimation: true,
     hasPadding: true,
     hasColors: true,
     hasAnalytics: true,

@@ -38,6 +38,8 @@ export const callToActionBannerSchema = withBlockSchema(
     ],
   },
   {
+    hasAnimation: true,
+    hasAnalytics: true,
     hasPadding: true,
     hasColors: true,
   },

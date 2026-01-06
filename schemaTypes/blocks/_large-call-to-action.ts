@@ -28,6 +28,7 @@ export const largeCallToActionSchema = withBlockSchema(
     ],
   },
   {
+    hasAnimation: true,
     hasPadding: true,
     hasColors: true,
     hasAnalytics: true,

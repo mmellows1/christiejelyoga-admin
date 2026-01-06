@@ -8,7 +8,6 @@ import {gallerySchema} from './_gallery'
 import {largeCallToActionSchema} from './_large-call-to-action'
 import {scheduleSchema} from './_schedule'
 import {socialMediaBannerSchema} from './_social-media-banner'
-import {testSchema} from './_test'
 
 export {
   textImageSchema,
@@ -21,5 +20,4 @@ export {
   largeCallToActionSchema,
   scheduleSchema,
   socialMediaBannerSchema,
-  testSchema,
 }

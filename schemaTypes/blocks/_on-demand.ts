@@ -33,6 +33,7 @@ export const onDemandSchema = withBlockSchema(
     ],
   },
   {
+    hasAnimation: true,
     hasPadding: true,
     hasColors: true,
     hasAnalytics: true,

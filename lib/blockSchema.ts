@@ -15,6 +15,7 @@ interface BaseOptions {
   hasPadding?: boolean
   hasColors?: boolean
   hasAnalytics?: boolean
+  hasAnimation?: boolean
 }
 
 const paddingOptions = [
@@ -84,6 +85,66 @@ const backgroundField = defineField({
       {title: 'None', value: 'transparent'},
       {title: 'White', value: 'white'},
       {title: 'Brand', value: 'brand'},
+      {title: 'Caramel', value: 'caramel'},
+      {title: 'Soft Gray', value: 'soft-gray'},
+    ],
+  },
+})
+
+const fluidField = defineField({
+  name: 'isFluid',
+  title: 'Fluid',
+  description: 'Fluid blocks will take up the full width of the page',
+  type: 'boolean',
+  group: 'layout',
+  initialValue: false,
+})
+
+const animationField = defineField({
+  name: 'animation',
+  title: 'Animation',
+  type: 'string',
+  group: 'animation',
+  description: 'You will need to refresh the browser in order to see the animation work',
+  initialValue: 'none',
+  options: {
+    layout: 'radio',
+    list: [
+      {title: 'None', value: 'none'},
+
+      // Fade
+      {title: 'Fade Up', value: 'fade-up'},
+      {title: 'Fade Down', value: 'fade-down'},
+      {title: 'Fade Left', value: 'fade-left'},
+      {title: 'Fade Right', value: 'fade-right'},
+      {title: 'Fade Up Right', value: 'fade-up-right'},
+      {title: 'Fade Up Left', value: 'fade-up-left'},
+      {title: 'Fade Down Right', value: 'fade-down-right'},
+      {title: 'Fade Down Left', value: 'fade-down-left'},
+
+      // Flip
+      {title: 'Flip Up', value: 'flip-up'},
+      {title: 'Flip Down', value: 'flip-down'},
+      {title: 'Flip Left', value: 'flip-left'},
+      {title: 'Flip Right', value: 'flip-right'},
+
+      // Slide
+      {title: 'Slide Up', value: 'slide-up'},
+      {title: 'Slide Down', value: 'slide-down'},
+      {title: 'Slide Left', value: 'slide-left'},
+      {title: 'Slide Right', value: 'slide-right'},
+
+      // Zoom
+      {title: 'Zoom In', value: 'zoom-in'},
+      {title: 'Zoom In Up', value: 'zoom-in-up'},
+      {title: 'Zoom In Down', value: 'zoom-in-down'},
+      {title: 'Zoom In Left', value: 'zoom-in-left'},
+      {title: 'Zoom In Right', value: 'zoom-in-right'},
+      {title: 'Zoom Out', value: 'zoom-out'},
+      {title: 'Zoom Out Up', value: 'zoom-out-up'},
+      {title: 'Zoom Out Down', value: 'zoom-out-down'},
+      {title: 'Zoom Out Left', value: 'zoom-out-left'},
+      {title: 'Zoom Out Right', value: 'zoom-out-right'},
     ],
   },
 })
@@ -122,6 +183,8 @@ export const withBlockSchema = (
       // Only assign content if NO fieldset is defined
       group: field.group ?? 'content',
     })),
+    fluidField,
+    ...(options.hasAnimation ? [animationField] : []),
     ...(options.hasPadding ? [paddingField] : []),
     ...(options.hasColors ? [backgroundField] : []),
     ...(options.hasAnalytics ? [trackClicksField] : []),
@@ -145,6 +208,7 @@ export const withBlockSchema = (
       {name: 'content', title: 'Content', default: true},
       {name: 'analytics', title: 'Analytics'},
       {name: 'layout', title: 'Layout'},
+      {name: 'animation', title: 'Animation'},
     ],
     fieldsets,
     ...rest,

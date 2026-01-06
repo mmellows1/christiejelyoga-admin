@@ -35,6 +35,7 @@ export const textImageSchema = withBlockSchema(
     ],
   },
   {
+    hasAnimation: true,
     hasPadding: true,
     hasColors: true,
   },

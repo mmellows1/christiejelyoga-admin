@@ -111,8 +111,9 @@ export const twoColumnContentSchema = withBlockSchema(
     ],
   },
   {
+    hasAnimation: true,
     hasPadding: true,
     hasColors: true,
-    trackButtonClicks: true,
+    hasAnalytics: true,
   },
 )

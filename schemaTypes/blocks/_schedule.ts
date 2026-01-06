@@ -27,6 +27,7 @@ export const scheduleSchema = withBlockSchema(
     ],
   },
   {
+    hasAnimation: true,
     hasPadding: true,
     hasColors: true,
     hasAnalytics: true,
