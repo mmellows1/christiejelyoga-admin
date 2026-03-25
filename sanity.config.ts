@@ -1,9 +1,8 @@
-import {defineConfig} from 'sanity'
-import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
+import {defineConfig} from 'sanity'
+import {defineDocuments, defineLocations, presentationTool} from 'sanity/presentation'
 import {schemaTypes} from './schemaTypes'
 import {deskStructure} from './structure'
-import {defineDocuments, defineLocations, presentationTool} from 'sanity/presentation'
 
 const locations = {
   pages: defineLocations({

@@ -1,5 +1,5 @@
-import {defineType, Rule} from 'sanity'
 import {Text} from 'lucide-react'
+import {defineType} from 'sanity'
 import {withBlockSchema} from '../../lib/blockSchema'
 
 export const textImageSchema = withBlockSchema(

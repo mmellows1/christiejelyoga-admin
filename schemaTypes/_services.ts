@@ -11,6 +11,14 @@ export const servicesSchema = defineType({
       type: 'image',
     }),
     defineField({
+      title: 'Slug',
+      name: 'slug',
+      type: 'slug',
+      options: {
+        source: 'title',
+      },
+    }),
+    defineField({
       title: 'Title',
       name: 'title',
       type: 'string',

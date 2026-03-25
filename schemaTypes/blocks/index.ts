@@ -8,10 +8,12 @@ import {gallerySchema} from './_gallery'
 import {largeCallToActionSchema} from './_large-call-to-action'
 import {scheduleSchema} from './_schedule'
 import {socialMediaBannerSchema} from './_social-media-banner'
+import {contentSchema} from './_content'
 
 export {
   textImageSchema,
   callToActionBannerSchema,
+  contentSchema,
   servicesSchema,
   contactFormSchema,
   twoColumnContentSchema,
